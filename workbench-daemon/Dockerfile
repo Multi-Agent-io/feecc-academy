@@ -5,7 +5,7 @@
 FROM python:3.10 as requirements-stage
 WORKDIR /tmp
 RUN pip install --upgrade pip
-RUN pip install poetry
+RUN pip install poetry==1.8.5
 COPY ./pyproject.toml ./poetry.lock* /tmp/
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 RUN poetry version | grep -o [0-9.]* > version.txt
